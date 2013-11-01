@@ -29,10 +29,6 @@ public class PanelConfig {
     
     public void setPushers(List<Pusher> pushers) {
         Collections.sort(pushers);
-//        for (Pusher pm : pushers) {
-//            int i = pm.getPos();
-//            this.pushers.set(i, pm);
-//        }
         this.pushers = pushers;
     }
 
