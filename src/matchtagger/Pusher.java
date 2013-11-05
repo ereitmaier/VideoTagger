@@ -13,10 +13,10 @@ import java.awt.Color;
 public class Pusher implements Comparable<Pusher> {
 
     private int index;
-    private String name;
-    private String label;
-    private String value;
-    private String category;
+    private String name = null;
+    private String label = null;
+    private String value = null;
+    private String category = null;
     private Color color;
     private int x;
     private int y;
@@ -25,10 +25,7 @@ public class Pusher implements Comparable<Pusher> {
     public Pusher() {
         this.index = 0;
         this.x = 0;
-        this.y = 0;
-        this.name = "";
-        this.label = "";
-        this.value = "";
+        this.y = 0;        
         this.color = Color.GREEN;
         this.visible = false;
     }
