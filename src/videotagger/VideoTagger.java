@@ -52,7 +52,7 @@ public class VideoTagger {
         // mediaURL = "/home/ericr/tmp/test.mp4";
         mediaURL = "/home/ericr/Videos/Wartburgia/MAH00514.MP4";
         String homedir = System.getProperty("user.home");
-        PanelConfig panelConfig = read.readConfig(homedir + "/mypanel.xml");
+        PanelConfig panelConfig = read.readConfig(homedir + "/mypanel5x8.xml");
         pushers = panelConfig.getPushers();
 
         playerPanel = new VideoPanel(mediaURL);

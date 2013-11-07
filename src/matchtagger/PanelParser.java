@@ -44,10 +44,9 @@ public class PanelParser {
     @SuppressWarnings({"unchecked", "null"})
     public PanelConfig readConfig(String configFile) {
         List<Pusher> pushers = new ArrayList<>();
-        String name = "";
+        String name = null;
         int height = 0;
         int width = 0;
-        int index = 0;
 
         try {
             // First create a new XMLInputFactory
@@ -88,10 +87,16 @@ public class PanelParser {
                         Iterator<Attribute> attributes = startElement.getAttributes();
                         while (attributes.hasNext()) {
                             Attribute attribute = attributes.next();
+                            // INDEx -> name ???
+                            int index = 0;
                             if (attribute.getName().toString().equals(INDEX)) {
-                                pusher.setName(attribute.getValue());
+                                try {
+                                    index = Integer.parseInt(attribute.getValue());
+                                } catch (NumberFormatException e) {
+                                    System.err.println("Error");
+                                }
+                                pusher.setIndex(index);
                             }
-
                         }
                     }
 
@@ -117,7 +122,7 @@ public class PanelParser {
                     }
 
                     if (event.asStartElement().getName().getLocalPart().equals(VISIBLE)) {
-                        event = eventReader.nextEvent();                        
+                        event = eventReader.nextEvent();
                         pusher.setVisible(event.asCharacters().getData().equals("1"));
                         continue;
                     }
@@ -148,13 +153,6 @@ public class PanelParser {
                 if (event.isEndElement()) {
                     EndElement endElement = event.asEndElement();
                     if (endElement.getName().getLocalPart().equals(PUSHER)) {
-                        int pos = 0;
-                        try {
-                            pos = Integer.parseInt(pusher.getName());
-                        } catch (NumberFormatException e) {
-                            System.err.println("Error");
-                        }
-                        pusher.setIndex(pos);
                         pushers.add(pusher);
                     }
                 }

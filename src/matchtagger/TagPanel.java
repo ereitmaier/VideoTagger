@@ -47,7 +47,7 @@ public class TagPanel extends JPanel
             b.setMinimumSize(buttonDimension);
             b.setBackground(pm.getColor());
             b.setFont(buttonFont);
-            b.setActionCommand(pm.getName());
+            b.setActionCommand(pm.getIndexString());
             b.setEnabled(pm.isVisible());
             b.addActionListener(this);
             add(b);
